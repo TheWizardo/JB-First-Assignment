@@ -6,6 +6,9 @@ function loadNotes() {
         row.className = "row";
         container.appendChild(row);
         for (let i = 0; i < allTasks.length; i++) {
+            // TODO
+            // check datetime and del accordingly
+
             if (i % 4 === 0 && i !== 0) {
                 row = document.createElement("div");
                 row.className = "row";
@@ -37,11 +40,17 @@ function saveTask() {
 }
 
 function insertNote(note, row = null) {
+    // TODO
+    // Add close button
     if (row === null) {
         const container = document.getElementById("note_container");
-        row = document.createElement("div");
-        row.className = "row";
-        container.appendChild(row);
+        const rows = container.childNodes;
+        row = rows[rows.length - 1];
+        if (row.length >= 4) {
+            row = document.createElement("div");
+            row.className = "row";
+            container.appendChild(row);
+        }
     }
     const d = document.createElement("div");
     const task_div = document.createElement("div");
