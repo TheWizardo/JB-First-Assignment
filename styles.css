@@ -1,0 +1,19 @@
+body{
+    background-image: url("assets/tile.jpg");
+}
+
+h1 {
+    text-align: center;
+}
+
+#formdiv{
+    background-image: url("assets/formbg.jpg");
+    margin: 0 auto;
+    height: 20vh;
+    width: 80%;
+    padding: 20px;
+}
+
+form{
+    margin-left: 65px;
+}
