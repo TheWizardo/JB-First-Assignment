@@ -17,3 +17,24 @@ h1 {
 form{
     margin-left: 65px;
 }
+
+
+#note_container{
+    margin: 0 auto;
+    width: 95%;
+}
+
+.note {
+    height: 255px;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-image: url(assets/notebg.png);
+    padding-top: 30px;
+}
+
+.task {
+    overflow: hidden scroll;
+    max-height: 140px;
+    height: 100%;
+    margin-right: 45px;
+}
