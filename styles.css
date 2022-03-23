@@ -34,7 +34,7 @@ form{
 
 
 .task {
-    overflow: hidden scroll;
+    overflow: hidden auto;
     max-height: 140px;
     height: 100%;
     margin-right: 45px;

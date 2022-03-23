@@ -16,7 +16,7 @@ An online ToDo Post-it notes board
 3. **Task Note:**  
     - Left to Right insertion (V)
     - CSS3 Fade-in transition (X)
-    - Vertical scroll of text (V) ``[scroll currently appears on all tasks]``  
+    - Vertical scroll of text (V)  
     - Date and time on bottom left (V)
 4. **Close Button:**
     - Display on hover (V)
