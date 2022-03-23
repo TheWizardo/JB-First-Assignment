@@ -19,7 +19,7 @@ form{
 }
 
 
-#note_container{
+#note-container{
     margin: 0 auto;
     width: 95%;
 }
@@ -32,9 +32,20 @@ form{
     padding-top: 30px;
 }
 
+
 .task {
     overflow: hidden scroll;
     max-height: 140px;
     height: 100%;
     margin-right: 45px;
+}
+
+.close-button { 
+    position: relative;
+    display: none;
+    left: 75%;
+}
+
+.note:hover > .close-button, .close-button:hover{
+    display: inline-block;
 }
