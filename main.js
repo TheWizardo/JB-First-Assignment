@@ -8,17 +8,15 @@
 // inner_span.innerHTML = "&times;";
 // close_button.appendChild(inner_span);
 
-const close_btn_HTML = `<button class="close close-button" aria-lable="Close" onclick="del_note(this)"><span aria-hidden="true">&times;</span></button>`
-
 function loadNotes() {
     let allTasks = JSON.parse(localStorage.getItem("tasks"));
     let tasks_yet_passed = [];
     const today = new Date();
     if (allTasks !== null) {
-        for (let t of allTasks) {
-            if (time_diff(today, t.date, t.time) >= 0) {
-                tasks_yet_passed.push(t);
-                insertNote(t);
+        for (let i = 0; i < allTasks.length; i++) {
+            if (time_diff(today, allTasks[i].date, allTasks[i].time) >= 0) {
+                tasks_yet_passed.push(allTasks[i]);
+                insertNote(allTasks[i], i);
             }
         }
         localStorage.setItem("tasks", JSON.stringify(tasks_yet_passed));
@@ -42,9 +40,9 @@ function saveTask() {
         if (allTasks === null) {
             allTasks = [];
         }
+        insertNote(new_task, allTasks.length, true);
         allTasks.push(new_task);
         localStorage.setItem("tasks", JSON.stringify(allTasks));
-        insertNote(new_task, true);
     }
     else {
         alert("Invalid Datetime");
@@ -55,10 +53,11 @@ function saveTask() {
     time_inp.value = "";
 }
 
-function insertNote(note, isNew = false) {
+function insertNote(note, index, fade) {
     const container = document.getElementById("note-container");
     const d = document.createElement("div");
     // d.appendChild(close_button);
+    const close_btn_HTML = `<button class="close close-button" aria-lable="Close" onclick="del_note(${index})"><span aria-hidden="true">&times;</span></button>`
     d.innerHTML += close_btn_HTML;
     const task_div = document.createElement("div");
     task_div.innerText = note.task;
@@ -66,27 +65,25 @@ function insertNote(note, isNew = false) {
     d.appendChild(task_div);
     // const week_in_milli = 1000 * 60 * 60 * 24 * 7;
     // const today = new Date();
-    isNew ? d.className = "note fade-in" : d.className = "note";
+    fade ? d.className = "note fade-in" : d.className = "note";
     d.innerHTML += `<br> ${note.date} <br> ${note.time}`;
+    d.id = `t${index}`;
     container.appendChild(d);
 }
 
-function del_note(btn) {
-    const note = btn.parentElement;
-    const task_div = btn.nextSibling;
-    const lines = note.innerText.split('\n');
-    const task_date = lines[lines.length - 2];
-    const task_time = lines[lines.length - 1];
-    let allTasks = JSON.parse(localStorage.getItem("tasks"));
-    for (let i = 0; i < allTasks.length; i++) {
-        // innerText ignores multipul spaces. innerHTML doesn't.
-        if (allTasks[i].task == task_div.innerHTML && allTasks[i].date === task_date && allTasks[i].time === task_time) {
-            allTasks.splice(i, 1);
-            localStorage.setItem("tasks", JSON.stringify(allTasks));
+function del_note(index) {
+    const container = document.getElementById("note-container");
+    const tasks = container.children;
+
+    for (let t of tasks) {
+        if (t.id === `t${index}`){
+            container.removeChild(t);
             break;
         }
     }
-    location.reload();
+    let allTasks = JSON.parse(localStorage.getItem("tasks"));
+    allTasks.splice(index, 1);
+    localStorage.setItem("tasks", JSON.stringify(allTasks));
 }
 
 function isValid(date_inp, time_inp) {
