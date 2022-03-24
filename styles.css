@@ -30,7 +30,8 @@ form{
     background-repeat: no-repeat;
     background-size: auto;
     background-image: url(assets/notebg.png);
-    padding-top: calc(11px + 1em);
+    padding-top: 20px;
+    padding-right: 11px;
     padding-left: 0.75em;
 }
 
@@ -48,13 +49,12 @@ form{
     overflow: hidden auto;
     max-height: 140px;
     height: 100%;
-    margin-right: calc(10px + 0.67em);
+    margin-top: 1em;
+    /* margin-right: calc(10px + 0.67em); */
 }
 
 .close-button { 
-    position: relative;
     display: none;
-    left: 75%;
 }
 
 .note:hover > .close-button, .close-button:hover{
