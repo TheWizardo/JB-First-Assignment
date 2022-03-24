@@ -21,4 +21,10 @@ An online ToDo Post-it notes board
 4. **Close Button:**
     - Display on hover (V)
     - Bootstrap Glyph (idk)
-    - Deletion from local storage (X)
+    - Deletion from local storage (V)
+5. **Not-Explicitly-Stated Features:**  
+    - Red Note background for tasks about to end (X)  
+    - Date-time validation check (X)  
+    - Task deletion from local storage on load (X)  
+    - Reactive design. Adjust amount of notes to screen (X)
+    - Delete without reload (X)
