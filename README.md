@@ -24,7 +24,7 @@ An online ToDo Post-it notes board
     - Deletion from local storage (V)
 5. **Not-Explicitly-Stated Features:**  
     - Red Note background for tasks about to end (X)  
-    - Date-time validation check (X)  
-    - Task deletion from local storage on load (X)  
+    - Date-time validation check (V)  
+    - Task deletion from local storage on load (V)  
     - Reactive design. Adjust amount of notes to screen (V)
-    - Delete without reload (X)
+    - Delete without reload (V)
