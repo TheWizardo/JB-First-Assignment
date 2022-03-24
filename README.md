@@ -20,7 +20,7 @@ An online ToDo Post-it notes board
     - Date and time on bottom left (V)
 4. **Close Button:**
     - Display on hover (V)
-    - Bootstrap Glyph (idk)
+    - Bootstrap Glyph (V)
     - Deletion from local storage (V)
 5. **Not-Explicitly-Stated Features:**  
     - Red Note background for tasks about to end (X)  
