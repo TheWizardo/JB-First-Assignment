@@ -11,6 +11,7 @@ h1 {
     margin: 0 auto;
     height: 20vh;
     width: 80%;
+    /* max-width: 669px; */
     padding: 20px;
 }
 
@@ -18,18 +19,28 @@ form{
     margin-left: 65px;
 }
 
-
 #note-container{
-    margin: 0 auto;
-    width: 95%;
+    margin: 1rem auto 0 auto;
+    width: 95vw;
 }
 
 .note {
     height: 255px;
+    width: 185px;
     background-repeat: no-repeat;
     background-size: auto;
     background-image: url(assets/notebg.png);
-    padding-top: 30px;
+    padding-top: calc(11px + 1em);
+    padding-left: 0.75em;
+}
+
+.fade-in {
+    animation: fadeIn 1.5s;
+}
+
+ @keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
 }
 
 
@@ -37,7 +48,7 @@ form{
     overflow: hidden auto;
     max-height: 140px;
     height: 100%;
-    margin-right: 45px;
+    margin-right: calc(10px + 0.67em);
 }
 
 .close-button { 

@@ -13,20 +13,8 @@ const close_btn_HTML = `<button class="close close-button" aria-lable="Close" on
 function loadNotes() {
     let allTasks = JSON.parse(localStorage.getItem("tasks"));
     if (allTasks !== null) {
-        const container = document.getElementById("note-container");
-        let row = document.createElement("div");
-        row.className = "row";
-        container.appendChild(row);
-        for (let i = 0; i < allTasks.length; i++) {
-            // TODO
-            // check datetime and del accordingly
-
-            if (i % 4 === 0 && i !== 0) {
-                row = document.createElement("div");
-                row.className = "row";
-                container.appendChild(row);
-            }
-            insertNote(allTasks[i], row);
+        for (let t of allTasks) {
+            insertNote(t);
         }
     }
 }
@@ -48,20 +36,15 @@ function saveTask() {
     }
     allTasks.push(new_task);
     localStorage.setItem("tasks", JSON.stringify(allTasks));
-    insertNote(new_task);
+    insertNote(new_task, true);
+    event.preventDefault();
+    task_inp.value = "";
+    date_inp.value = "";
+    time_inp.value = "";
 }
 
-function insertNote(note, row = null) {
-    if (row === null) {
-        const container = document.getElementById("note-container");
-        const rows = container.childNodes;
-        row = rows[rows.length - 1];
-        if (row.length >= 4) {
-            row = document.createElement("div");
-            row.className = "row";
-            container.appendChild(row);
-        }
-    }
+function insertNote(note, isNew=false) {
+    const container = document.getElementById("note-container");
     const d = document.createElement("div");
     // d.appendChild(close_button);
     d.innerHTML += close_btn_HTML;
@@ -69,9 +52,9 @@ function insertNote(note, row = null) {
     task_div.innerHTML = note.task;
     task_div.className = "task";
     d.appendChild(task_div);
-    d.className = "col-3 note";
+    isNew ? d.className = "note fade-in" : d.className = "note";
     d.innerHTML += `<br> ${note.date} <br> ${note.time}`;
-    row.appendChild(d);
+    container.appendChild(d);
 }
 
 function del_note(btn) {
