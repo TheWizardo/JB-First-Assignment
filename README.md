@@ -23,7 +23,7 @@ An online ToDo Post-it notes board
     - Bootstrap Glyph (V)
     - Deletion from local storage (V)
 5. **Not-Explicitly-Stated Features:**  
-    - Red Note background for tasks about to end (X)  
+    - Red Note background for tasks about to end (V)  
     - Date-time validation check (V)  
     - Task deletion from local storage on load (V)  
     - Reactive design. Adjust amount of notes to screen (V)

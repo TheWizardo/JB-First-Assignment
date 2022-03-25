@@ -21,17 +21,25 @@ form{
 
 #note-container{
     display: flex;
+    flex-wrap: wrap;
     margin: 1rem auto 0 auto;
     width: 95vw;
 }
 
 .note {
+    background-image: url(assets/notebg.png);
+}
+
+.red-note {
+    background-image: url(assets/red-notebg.png);
+}
+
+.red-note , .note {
     height: 255px;
     width: 185px;
     min-width: 185px;
     background-repeat: no-repeat;
     background-size: auto;
-    background-image: url(assets/notebg.png);
     padding-top: 20px;
     padding-right: 11px;
     padding-left: 0.75em;
