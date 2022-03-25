@@ -5,7 +5,7 @@ An online ToDo Post-it notes board
 ## What do we already have?
 1. **Header:**  
     - Centered (V)  
-    - CSS3 font (X)  
+    - CSS3 font (V)  
 2. **Input Form:**  
     - Centered (V)
     - Notebook background (V)

@@ -4,6 +4,13 @@ body{
 
 h1 {
     text-align: center;
+    font-family: "Hurricane";
+}
+
+@font-face {
+    font-family: "Hurricane";
+    font-size: xx-large; 
+    src: url("assets/Hurricane-Regular.ttf");
 }
 
 #formdiv{
