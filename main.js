@@ -15,8 +15,9 @@ function loadNotes() {
     if (allTasks !== null) {
         for (let i = 0; i < allTasks.length; i++) {
             if (time_diff(today, allTasks[i].date, allTasks[i].time) >= 0) {
+                allTasks[i].id = i;
                 tasks_yet_passed.push(allTasks[i]);
-                insertNote(allTasks[i], i);
+                insertNote(allTasks[i]);
             }
         }
         localStorage.setItem("tasks", JSON.stringify(tasks_yet_passed));
@@ -29,18 +30,23 @@ function saveTask() {
     const time_inp = document.getElementById("end-time");
 
     if (isValid(date_inp, time_inp)) {
+        let allTasks = JSON.parse(localStorage.getItem("tasks"));
+        let index = 0;
+        if (allTasks === null) {
+            allTasks = [];
+        }
+        else {
+            index = allTasks[allTasks.length - 1].id + 1;
+        }
 
         const new_task = {
+            id: index,
             task: task_inp.value,
             date: date_inp.value,
             time: time_inp.value,
         }
 
-        let allTasks = JSON.parse(localStorage.getItem("tasks"));
-        if (allTasks === null) {
-            allTasks = [];
-        }
-        insertNote(new_task, allTasks.length, true);
+        insertNote(new_task, true);
         allTasks.push(new_task);
         localStorage.setItem("tasks", JSON.stringify(allTasks));
     }
@@ -53,11 +59,11 @@ function saveTask() {
     time_inp.value = "";
 }
 
-function insertNote(note, index, fade) {
+function insertNote(note, fade = false) {
     const container = document.getElementById("note-container");
     const d = document.createElement("div");
     // d.appendChild(close_button);
-    const close_btn_HTML = `<button class="close close-button" onclick="del_note(${index})"><span class="glyphicon glyphicon-remove"></span></button>`
+    const close_btn_HTML = `<button class="close close-button" onclick="del_note(${note.id})"><span class="glyphicon glyphicon-remove"></span></button>`
     d.innerHTML += close_btn_HTML;
     const task_div = document.createElement("div");
     task_div.innerText = note.task;
@@ -70,23 +76,23 @@ function insertNote(note, index, fade) {
         d.className += " fade-in";
     }
     d.innerHTML += `<br> ${note.date} <br> ${note.time}`;
-    d.id = `t${index}`;
+    d.id = `t${note.id}`;
     container.appendChild(d);
 }
 
 function del_note(index) {
+    let allTasks = JSON.parse(localStorage.getItem("tasks"));
     const container = document.getElementById("note-container");
     const tasks = container.children;
 
-    for (let t of tasks) {
-        if (t.id === `t${index}`){
-            container.removeChild(t);
+    for (let t = 0; t < tasks.length; t++) {
+        if (tasks[t].id === `t${index}`) {
+            container.removeChild(tasks[t]);
+            allTasks.splice(t, 1);
+            localStorage.setItem("tasks", JSON.stringify(allTasks));
             break;
         }
     }
-    let allTasks = JSON.parse(localStorage.getItem("tasks"));
-    allTasks.splice(index, 1);
-    localStorage.setItem("tasks", JSON.stringify(allTasks));
 }
 
 function isValid(date_inp, time_inp) {
