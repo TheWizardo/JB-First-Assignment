@@ -31,13 +31,10 @@ function saveTask() {
 
     if (isValid(date_inp, time_inp)) {
         let allTasks = JSON.parse(localStorage.getItem("tasks"));
-        let index = 0;
         if (allTasks === null) {
             allTasks = [];
         }
-        else {
-            index = allTasks[allTasks.length - 1].id + 1;
-        }
+        let index = allTasks.length > 0 ? allTasks[allTasks.length - 1].id + 1 : 0;
 
         const new_task = {
             id: index,
