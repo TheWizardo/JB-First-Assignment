@@ -66,13 +66,16 @@ function insertNote(note, fade = false) {
     task_div.innerText = note.task;
     task_div.className = "task";
     d.appendChild(task_div);
+    const date_div = document.createElement("div");
+    date_div.innerText = `${note.date}\n${note.time}`;
+    date_div.className = "datetime";
+    d.appendChild(date_div);
     const week_in_milli = 1000 * 60 * 60 * 24 * 7;
     const today = new Date();
     time_diff(today, note.date, note.time) < week_in_milli ? d.className = "red-note" : d.className = "note";
     if (fade) {
         d.className += " fade-in";
     }
-    d.innerHTML += `<br> ${note.date} <br> ${note.time}`;
     d.id = `t${note.id}`;
     container.appendChild(d);
 }
