@@ -57,7 +57,7 @@ function insertNote(note, index, fade) {
     const container = document.getElementById("note-container");
     const d = document.createElement("div");
     // d.appendChild(close_button);
-    const close_btn_HTML = `<button class="close close-button" aria-lable="Close" onclick="del_note(${index})"><span aria-hidden="true">&times;</span></button>`
+    const close_btn_HTML = `<button class="close close-button" onclick="del_note(${index})"><span class="glyphicon glyphicon-remove"></span></button>`
     d.innerHTML += close_btn_HTML;
     const task_div = document.createElement("div");
     task_div.innerText = note.task;
