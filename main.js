@@ -49,12 +49,12 @@ function saveTask() {
         insertNote(new_task, true);
         allTasks.push(new_task);
         localStorage.setItem("tasks", JSON.stringify(allTasks));
+        task_inp.value = "";
     }
     else {
         alert("Invalid Datetime");
     }
     event.preventDefault();
-    task_inp.value = "";
     date_inp.value = "";
     time_inp.value = "";
 }
