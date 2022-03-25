@@ -20,6 +20,7 @@ form{
 }
 
 #note-container{
+    display: flex;
     margin: 1rem auto 0 auto;
     width: 95vw;
 }
@@ -27,12 +28,14 @@ form{
 .note {
     height: 255px;
     width: 185px;
+    min-width: 185px;
     background-repeat: no-repeat;
     background-size: auto;
     background-image: url(assets/notebg.png);
     padding-top: 20px;
     padding-right: 11px;
     padding-left: 0.75em;
+    margin-right: 1rem;
 }
 
 .fade-in {

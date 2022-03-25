@@ -14,7 +14,7 @@ An online ToDo Post-it notes board
     - Form save button (V)
     - Form reset button (V)
 3. **Task Note:**  
-    - Left to Right insertion (X)
+    - Left to Right insertion (V)
     - CSS3 Fade-in transition (V)
     - Vertical scroll of text (V)  
     - Date and time on bottom left (V)
@@ -26,5 +26,5 @@ An online ToDo Post-it notes board
     - Red Note background for tasks about to end (X)  
     - Date-time validation check (V)  
     - Task deletion from local storage on load (V)  
-    - Reactive design. Adjust amount of notes to screen (X)
+    - Reactive design. Adjust amount of notes to screen (V)
     - Delete without reload (V)
