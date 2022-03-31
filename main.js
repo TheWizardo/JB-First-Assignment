@@ -1,24 +1,11 @@
-// const close_button = document.createElement("button");
-// close_button.className = "close close-button";
-// close_button.ariaLabel = "Close";
-// // close_button.addEventListener("click", function () { del_note(this); });
-// // close_button.onclick = function () { del_note(this); };
-// const inner_span = document.createElement("span");
-// inner_span.ariaHidden = "true";
-// inner_span.innerHTML = "&times;";
-// close_button.appendChild(inner_span);
-
 function loadNotes() {
     let allTasks = JSON.parse(localStorage.getItem("tasks"));
-    let tasks_yet_passed = [];
     const today = new Date();
     if (allTasks !== null) {
-        for (let i = 0; i < allTasks.length; i++) {
-            if (time_diff(today, allTasks[i].date, allTasks[i].time) >= 0) {
-                allTasks[i].id = i;
-                tasks_yet_passed.push(allTasks[i]);
-                insertNote(allTasks[i]);
-            }
+        let tasks_yet_passed = allTasks.filter(task => time_diff(today, task.date, task.time) >= 0);
+        for (let i = 0; i < tasks_yet_passed.length; i++) {
+            tasks_yet_passed[i].id = i;
+            insertNote(tasks_yet_passed[i]);
         }
         localStorage.setItem("tasks", JSON.stringify(tasks_yet_passed));
     }
@@ -59,7 +46,6 @@ function saveTask() {
 function insertNote(note, fade = false) {
     const container = document.getElementById("note-container");
     const d = document.createElement("div");
-    // d.appendChild(close_button);
     const close_btn_HTML = `<button class="close close-button" onclick="del_note(${note.id})"><span class="glyphicon glyphicon-remove"></span></button>`
     d.innerHTML += close_btn_HTML;
     const task_div = document.createElement("div");
