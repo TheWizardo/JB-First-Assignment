@@ -18,7 +18,6 @@ h1 {
     margin: 0 auto;
     height: 20vh;
     width: 80%;
-    /* max-width: 669px; */
     padding: 20px;
 }
 
@@ -47,7 +46,7 @@ form{
     background-image: url(assets/red-notebg.png);
 }
 
-.red-note , .note {
+.red-note, .note {
     position: relative;
     height: 255px;
     width: 185px;
